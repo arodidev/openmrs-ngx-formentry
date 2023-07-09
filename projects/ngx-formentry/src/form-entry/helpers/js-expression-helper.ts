@@ -320,7 +320,9 @@ export class JsExpressionHelper {
    */
   async fetchData(url, objectPath, options = {}) {
     try {
-      const response = await fetch(url, { ...options });
+      const response = await fetch(url, {
+        ...options,
+      });
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -344,7 +346,7 @@ export class JsExpressionHelper {
     if (!val || ['undefined', 'null', ''].includes(val.toString())) {
       return true;
     }
-    const pattern = new RegExp(regexString); 
+    const pattern = new RegExp(regexString);
     if (!pattern.test(val)) {
       return true;
     }
@@ -369,6 +371,15 @@ export class JsExpressionHelper {
     return gravida;
   }
 
+  calculateZNutritionScore(zScore: number) {
+    if (zScore > -1) return "1115AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if (zScore === -1) return "123814AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if (zScore === -2) return "123815AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if (zScore === -3) return "123815AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    if (zScore === -4) return "164131AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    return ""
+  }
+
   get helperFunctions() {
     const helper = this;
     return {
@@ -384,7 +395,8 @@ export class JsExpressionHelper {
       getObsFromControlOrEncounter: helper.getObsFromControlOrEncounter,
       doesNotMatchExpression: helper.doesNotMatchExpression,
       calcGravida: helper.calcGravida,
-      fetchData: helper.fetchData
+      fetchData: helper.fetchData,
+      calculateZNutritionScore: helper.calculateZNutritionScore
     };
   }
 }
