@@ -47,6 +47,7 @@ import { CustomComponentWrapperModule } from '../components/custom-component-wra
 import { TranslateModule } from '@ngx-translate/core';
 import { PatientIdentifierAdapter } from './value-adapters/patient-identifier.adapter';
 import { MachineLearningComponent } from '../components/machine-learning-button/machine-learning.component';
+import { MachineLearningService } from '../components/machine-learning-button/machine-learning.service';
 
 @NgModule({
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -102,7 +103,8 @@ import { MachineLearningComponent } from '../components/machine-learning-button/
     OrderValueAdapter,
     DiagnosisValueAdapter,
     DebugModeService,
-    PatientIdentifierAdapter
+    PatientIdentifierAdapter,
+    MachineLearningService
   ],
   exports: [
     FormRendererComponent,
